@@ -44,7 +44,7 @@ function SmartDropdown(props) {
       <div className={"parent"}>
         Selected Country: {selectedCountry}
       </div>
-      <Dropdown parent={parent} maxList="5" countries={countries} onSelectCountry={onSelectCountry} onAddCountry={onAddCountry} />
+      <Dropdown parent={parent} maxList="5" countries={countries} selectedCountry={selectedCountry} onSelectCountry={onSelectCountry} onAddCountry={onAddCountry} />
     </div>
   );
 }
