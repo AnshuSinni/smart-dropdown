@@ -3,15 +3,19 @@ import { Dropdown, FormControl, InputGroup, Button } from "react-bootstrap"
 import { BsSearch } from "react-icons/bs";
 
 function CustomDropdown(props) {
-  const { countries, onSelectCountry, onAddCountry, parent } = props;
+  const { countries, onSelectCountry, onAddCountry, parent, maxList } = props;
 
   const [searchValue, setSearchValue] = useState("")
   const [countriesList, setCountriesList] = useState([])
-  const [more, setMore] = useState(countries.length - countriesList.length)
-  const [showMore, setShowMore] = useState(more > 0 ? true : false)
+  const [more, setMore] = useState("")
+  const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
-    setCountriesList(countries.length > 5 ? countries.slice(0, 5) : countries)
+    setCountriesList(countries.length > maxList ? countries.slice(0, maxList) : countries)
+    setMore(countries.length - maxList)
+    if (countries.length > maxList) {
+      setShowMore(true)
+    }
     setSearchValue("")
   }, [countries, parent])
 

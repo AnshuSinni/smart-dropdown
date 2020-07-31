@@ -7,14 +7,16 @@ function SmartDropdown(props) {
   const { parent } = props
   const [countries, setCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = React.useState("")
+  const [getCountries, setGetCountries] = useState(false)
 
   useEffect(() => {
     fetch("http://168.235.109.53:5000/countries")
       .then(response => response.json())
       .then(data => {
+        console.log(data.countries)
         setCountries(data.countries)
       });
-  }, [])
+  }, [getCountries])
 
   useEffect(() => {
     setSelectedCountry("")
@@ -30,8 +32,8 @@ function SmartDropdown(props) {
       .then(function (response) {
         return response.json();
       }).then(function (data) {
-        console.log(data)
         if (data.status === "Success") {
+          setGetCountries(true)
           setSelectedCountry(searchValue)
         }
       });
@@ -42,7 +44,7 @@ function SmartDropdown(props) {
       <div className={"parent"}>
         Selected Country: {selectedCountry}
       </div>
-      <Dropdown parent={parent} countries={countries} onSelectCountry={onSelectCountry} onAddCountry={onAddCountry} />
+      <Dropdown parent={parent} maxList="5" countries={countries} onSelectCountry={onSelectCountry} onAddCountry={onAddCountry} />
     </div>
   );
 }
