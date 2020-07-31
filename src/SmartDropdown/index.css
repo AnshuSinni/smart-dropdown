@@ -1,0 +1,12 @@
+.parent {
+    /* border: 1px solid gray; */
+    padding: 15px;
+}
+
+.child {
+    padding: 15px;
+}
+
+.add-button {
+    margin-left: 10px;
+}
