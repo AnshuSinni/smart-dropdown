@@ -48,7 +48,7 @@ function CustomDropdown(props) {
 
   return (
     <div className="child">
-      <Dropdown variant="secondary" className={"dropdown"}>
+      <Dropdown variant="secondary" className="dropdown">
         <Dropdown.Toggle >
           {selectedCountry ? selectedCountry : "Select a location"}
         </Dropdown.Toggle>
@@ -86,8 +86,9 @@ function CustomDropdown(props) {
           {
             showMore &&
             <div className="show-more"
-              style={{ float: "right", cursor: "pointer" }}
-              onClick={getAllCountriesList}>
+              style={{ float: "right", cursor: "pointer",fontSize: "12px" }}
+              onClick={getAllCountriesList}
+            >
               {more} more...
              </div>
           }

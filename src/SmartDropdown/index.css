@@ -1,5 +1,4 @@
 .parent {
-    /* border: 1px solid gray; */
     padding: 15px;
 }
 
@@ -9,4 +8,18 @@
 
 .add-button {
     margin-left: 10px;
+}
+
+.dropdown .dropdown-toggle{
+    width: 250px;
+    text-align: left;
+}
+
+.dropdown-toggle::after {
+   margin-top: 10px;
+   float: right;
+}
+
+.dropdown-menu.show {
+    width: 250px;
 }
