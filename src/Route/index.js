@@ -14,26 +14,26 @@ export default function App() {
         <Router>
             <div>
                 <nav>
-                    <Link to="/"><Redirect to="/parent" /></Link>
+                    <Link to="/"><Redirect to="/privelege" /></Link>
                     <ul>
                         <li>
-                            <Link to="/parent">Parent</Link>
+                            <Link to="/privelege">Privelege</Link>
                         </li>
                         <li>
-                            <Link to="/child">Child</Link>
+                            <Link to="/unprivelge">Unprivelge</Link>
                         </li>
                     </ul>
                 </nav>
 
                 <Switch>
-                    <Route path="/parent">
-                        <SmartDropdown parent={true} />
+                    <Route path="/privelege">
+                        <SmartDropdown privelege={true} />
                     </Route>
-                    <Route path="/child">
-                        <SmartDropdown parent={false}/>
+                    <Route path="/unprivelge">
+                        <SmartDropdown privelege={false}/>
                     </Route>
                     <Route path="/">
-                        <SmartDropdown parent={true}/>
+                        <SmartDropdown privelege={true}/>
                     </Route>
                 </Switch>
             </div>

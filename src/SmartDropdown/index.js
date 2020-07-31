@@ -4,7 +4,7 @@ import Dropdown from './Dropdown';
 import './index.css'
 
 function SmartDropdown(props) {
-  const { parent } = props
+  const { privelege } = props
   const [countries, setCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = React.useState("")
   const [getCountries, setGetCountries] = useState(false)
@@ -13,21 +13,19 @@ function SmartDropdown(props) {
     fetch("http://168.235.109.53:5000/countries")
       .then(response => response.json())
       .then(data => {
-        console.log(data.countries)
         setCountries(data.countries)
       });
   }, [getCountries])
 
   useEffect(() => {
     setSelectedCountry("")
-  }, [parent])
+  }, [privelege])
 
   const onSelectCountry = (eventKey, event) => {
     setSelectedCountry(eventKey)
   }
 
   const onAddCountry = (searchValue) => {
-    console.log(searchValue)
     fetch(`http://168.235.109.53:5000/addcountry?name=${searchValue}`)
       .then(function (response) {
         return response.json();
@@ -44,7 +42,7 @@ function SmartDropdown(props) {
       <div className={"parent"}>
         Selected Country: {selectedCountry}
       </div>
-      <Dropdown parent={parent} maxList="5" countries={countries} selectedCountry={selectedCountry} onSelectCountry={onSelectCountry} onAddCountry={onAddCountry} />
+      <Dropdown privelege={privelege} maxList="5" countries={countries} selectedCountry={selectedCountry} onSelectCountry={onSelectCountry} onAddCountry={onAddCountry} />
     </div>
   );
 }

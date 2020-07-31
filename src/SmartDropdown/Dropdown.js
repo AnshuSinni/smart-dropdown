@@ -3,7 +3,7 @@ import { Dropdown, FormControl, InputGroup, Button } from "react-bootstrap"
 import { BsSearch } from "react-icons/bs";
 
 function CustomDropdown(props) {
-  const { countries, onSelectCountry, onAddCountry, parent, maxList, selectedCountry } = props;
+  const { countries, onSelectCountry, onAddCountry, privelege, maxList, selectedCountry } = props;
 
   const [searchValue, setSearchValue] = useState("")
   const [countriesList, setCountriesList] = useState([])
@@ -17,7 +17,7 @@ function CustomDropdown(props) {
       setShowMore(true)
     }
     setSearchValue("")
-  }, [countries, parent])
+  }, [countries, privelege])
 
   const onChangeSearchValue = (event) => {
     let searchVal = event.target.value
@@ -32,13 +32,12 @@ function CustomDropdown(props) {
     } else {
       tempCountriesList = countries
     }
-    console.log(tempCountriesList, tempCountriesList.length , maxList)
-    if(tempCountriesList.length > maxList) {
+    if (tempCountriesList.length > maxList) {
       setMore(tempCountriesList.length - maxList)
     } else {
       setShowMore(false)
     }
-    
+
     setCountriesList(tempCountriesList)
   }
 
@@ -74,15 +73,15 @@ function CustomDropdown(props) {
                   </Dropdown.Item>
                 )
               }) :
-               searchValue && searchValue === " " &&
+              searchValue && searchValue.trim() !== "" &&
               <div>
                 {`"${searchValue}" not found`}
                 {
-                  parent &&
+                  privelege &&
                   <Button className="add-button" variant="secondary" onClick={() => onAddCountry(searchValue)}>Add & Select</Button>
                 }
               </div>
-          
+
           }
           {
             showMore &&
